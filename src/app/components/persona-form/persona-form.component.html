@@ -1,0 +1,45 @@
+<form [formGroup]="personaForm" (ngSubmit)="submitForm()">
+  <div class="form-group">
+    <label for="name">Nombre</label>
+    <input type="text" id="name" class="form-control" formControlName="name" />
+    <div *ngIf="personaForm.get('name')?.invalid && personaForm.get('name')?.touched">
+      <small class="text-danger">El nombre es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="last_name">Apellido Paterno</label>
+    <input type="text" id="last_name" class="form-control" formControlName="last_name" />
+    <div *ngIf="personaForm.get('last_name')?.invalid && personaForm.get('last_name')?.touched">
+      <small class="text-danger">El apellido paterno es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="second_last_name">Apellido Materno</label>
+    <input type="text" id="second_last_name" class="form-control" formControlName="second_last_name" />
+    <div *ngIf="personaForm.get('second_last_name')?.invalid && personaForm.get('second_last_name')?.touched">
+      <small class="text-danger">El apellido materno es obligatorio</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="address">Dirección</label>
+    <input type="text" id="address" class="form-control" formControlName="address" />
+    <div *ngIf="personaForm.get('address')?.invalid && personaForm.get('address')?.touched">
+      <small class="text-danger">La dirección es obligatoria</small>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="phone">Teléfono</label>
+    <input type="text" id="phone" class="form-control" formControlName="phone" />
+    <div *ngIf="personaForm.get('phone')?.invalid && personaForm.get('phone')?.touched">
+      <small class="text-danger">El teléfono es obligatorio y debe ser numérico</small>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary" [disabled]="personaForm.invalid">
+    Guardar
+  </button>
+</form>

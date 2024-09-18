@@ -1,0 +1,38 @@
+<div class="container">
+  <div *ngIf="!selectedPersona">
+    <input [formControl]="searchControl" placeholder="Buscar por nombre o apellido" class="form-control mb-3" />
+
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>id</th>
+          <th>Nombre</th>
+          <th>Apellido Paterno</th>
+          <th>Apellido Materno</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let persona of filteredPersonas">
+          <td>{{ persona.id }}</td>
+          <td>{{ persona.name }}</td>
+          <td>{{ persona.last_name }}</td>
+          <td>{{ persona.second_last_name }}</td>
+          <td>{{ persona.address }}</td>
+          <td>{{ persona.phone }}</td>
+          <td>
+            <button class="btn btn-primary" (click)="editPersona(persona.id)">Editar</button>
+            <button class="btn btn-danger" (click)="deletePersona(persona.id)">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <button class="btn btn-success" (click)="createPersona()">Agregar Persona</button>
+  </div>
+
+  <app-persona-form *ngIf="selectedPersona" [persona]="selectedPersona" (formSubmitted)="onFormSubmit($event)">
+  </app-persona-form>
+</div>
